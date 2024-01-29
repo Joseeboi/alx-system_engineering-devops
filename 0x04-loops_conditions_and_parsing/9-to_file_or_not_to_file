@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# this code gives information about the school file 
 file="school"
 
 # Check if the file exists

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script displays information about users in /etc/passwd using the while loop + IFS.
 
 # Set the file path
