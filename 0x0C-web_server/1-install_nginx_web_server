@@ -10,22 +10,32 @@ sudo apt-get update -y -qq && \
 echo -e "\nSetting up some minor stuff.\n"
 
 # starting nginx service
+echo "Starting Nginx service..."
 sudo service nginx start
+echo "Nginx service started."
 
 # Give the user ownership to website files for easy editing
+echo "Setting file permissions..."
 sudo chown -R "$USER":"$USER" /var/www/html
 sudo chmod -R 755 /var/www
+echo "File permissions set."
 
 # Backup default index
+echo "Backing up default index file..."
 sudo cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
 
 # Creating new index
+echo "Creating new index file..."
 echo -e "Hello World!" | sudo dd status=none of=/var/www/html/index.nginx-debian.html
 
 # Restarting nginx
+echo "Restarting Nginx..."
 sudo service nginx restart
+echo "Nginx restarted."
 
 # allowing nginx on firewall
+echo "Allowing Nginx through the firewall..."
 sudo ufw allow 'Nginx HTTP'
+echo "Nginx allowed through the firewall."
 
 echo -e "\nCompleted. ✅ \n"
