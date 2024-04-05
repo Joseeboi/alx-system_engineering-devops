@@ -48,6 +48,10 @@ frontend  aysuarex.tech-https-frontend
 
 backend aysuarex.tech-backend
         balance roundrobin
+	redirect scheme https if !{ ssl_fc }
         server 914-web-01 44.210.150.159:80 check
         server 914-web-02 35.173.47.15:80 check
+
+backend letsencrypt-backend
+    server letsencrypt 127.0.0.1:54321
 # end of parameters
