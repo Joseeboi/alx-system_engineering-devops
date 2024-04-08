@@ -1,24 +1,4 @@
 #!/usr/bin/env bash
-
-# Script to open port 80 in Nginx configuration
-
-# Check if Nginx configuration file exists
-if [ ! -f "/etc/nginx/sites-enabled/default" ]; then
-    echo "Nginx configuration file not found!"
-    exit 1
-fi
-
-# Replace port 8080 with port 80 in Nginx configuration
+# Open the 80 port
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-
-# Check if Nginx service is running
-if ! pgrep -x "nginx" >/dev/null; then
-    echo "Nginx is not running. Starting Nginx service..."
-    service nginx start
-else
-    # Restart Nginx service to apply changes
-    echo "Restarting Nginx service..."
-    service nginx restart
-fi
-
-echo "Port 80 opened in Nginx configuration."
+service nginx restart
